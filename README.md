@@ -1,21 +1,18 @@
-# 🎓 FICR-IAEDU1A — IA Assistiva no Ensino de Programação
+# 🚀 Modernização e Refatoração de Aplicação Legada com IA
 
-Repositório monorepo para a disciplina de **Informática na Educação / HTML & CSS**,
-usado no experimento com **GitHub Copilot** (COMIA x SEMIA) em squads.
+## 📖 Sobre o Projeto
+Este repositório documenta o processo de revitalização de uma aplicação antiga. O objetivo principal deste projeto foi realizar uma análise crítica do código legado, identificar pontos de melhoria e aplicar boas práticas de desenvolvimento para modernizar o sistema. 
 
-## 👥 Organização dos Squads
+Além da reestruturação do código, o projeto ganhou uma nova funcionalidade de peso: a integração de um **chat com Inteligência Artificial**, elevando a interatividade e a experiência do usuário.
 
-Cada squad possui 4 alunos:
-- 2 focados em **HTML**
-- 2 focados em **CSS**
+## ✨ O Que Foi Feito
 
+* **🔍 Diagnóstico e Planejamento:** Análise profunda da aplicação original para mapear gargalos de performance, falhas de segurança e oportunidades de melhoria.
+* **🛠️ Refatoração de Código:** Reestruturação da base de código para torná-la mais limpa, legível, escalável e fácil de manter, aplicando princípios de *Clean Code* (Código Limpo).
+* **🤖 Integração com IA:** Desenvolvimento e implementação de um chat interativo alimentado por Inteligência Artificial, trazendo funcionalidades modernas e inteligentes para o sistema.
+* **🔒 Segurança e Configuração:** Ocultação de credenciais e tokens utilizando variáveis de ambiente (padrão `.env`).
 
+## 💻 Tecnologias Utilizadas
 
-## 🗓️ Sprints (por páginas)
-
-- **Sprint 1:** Home, Sobre  
-- **Sprint 2:** Contato, Projetos  
-- **Sprint 3:** Habilidades, Serviços  
-- **Sprint 4:** Depoimentos, Case de Sucesso  
-
-Detalhes de uso e automação estão em `docs/INSTRUCTIONS.md`.
+* **Linguagem Principal:** Html, Css, Javascript, Python e Typescript.
+* **Inteligência Artificial:** Google Gemini
