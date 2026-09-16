@@ -1,0 +1,112 @@
+name: CI - Análise de Métricas por Squad
+
+on: [push, pull_request]
+
+jobs:
+  analyze-squads:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        squad: [A, B, C, D, E, F, G, H, I]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install html-validate and stylelint
+        run: |
+          npm install -g html-validate
+          npm install -g stylelint stylelint-config-standard
+
+      - name: Install Python dependencies
+        run: |
+         python -m pip install --upgrade pip
+         pip install pandas requests
+
+      - name: Analyze Squad ${{ matrix.squad }}
+        run: |
+          python scripts/analyze_squad.py squads/squad-${{ matrix.squad }}
+
+      - name: Generate Research Metrics Skeleton
+        run: |
+          python scripts/analyze_metrics.py
+
+      # NOVO: Análise CSS não-bloqueadora
+      - name: Analyze CSS Metrics for Squad ${{ matrix.squad }}
+        id: css_analysis
+        continue-on-error: true  # ⬅️ NÃO BLOQUEIA
+        run: |
+          echo "🔍 Analisando CSS para Squad ${{ matrix.squad }}..."
+          
+          # Encontra arquivos CSS específicos do squad
+          SQUAD_DIR="squads/squad-${{ matrix.squad }}"
+          if [ -d "$SQUAD_DIR" ]; then
+            CSS_FILES=$(find "$SQUAD_DIR" -name "*.css" | wc -l)
+            echo "Encontrados $CSS_FILES arquivos CSS no squad ${{ matrix.squad }}"
+            
+            if [ $CSS_FILES -gt 0 ]; then
+              # Analisa CSS do squad específico
+              npx stylelint "$SQUAD_DIR/**/*.css" --formatter json > "css-report-squad-${{ matrix.squad }}.json" 2>/dev/null || true
+              
+              # Conta problemas
+              if [ -f "css-report-squad-${{ matrix.squad }}.json" ] && [ -s "css-report-squad-${{ matrix.squad }}.json" ]; then
+                ERROR_COUNT=$(jq '[.[] | .warnings[] | select(.severity == "error")] | length' "css-report-squad-${{ matrix.squad }}.json" || echo "0")
+                WARNING_COUNT=$(jq '[.[] | .warnings[] | select(.severity == "warning")] | length' "css-report-squad-${{ matrix.squad }}.json" || echo "0")
+                TOTAL_ISSUES=$((ERROR_COUNT + WARNING_COUNT))
+              else
+                ERROR_COUNT=0
+                WARNING_COUNT=0
+                TOTAL_ISSUES=0
+              fi
+            else
+              ERROR_COUNT=0
+              WARNING_COUNT=0
+              TOTAL_ISSUES=0
+            fi
+          else
+            echo "Diretório do squad $SQUAD_DIR não encontrado"
+            ERROR_COUNT=0
+            WARNING_COUNT=0
+            TOTAL_ISSUES=0
+            CSS_FILES=0
+          fi
+          
+          echo "error_count=$ERROR_COUNT" >> $GITHUB_OUTPUT
+          echo "warning_count=$WARNING_COUNT" >> $GITHUB_OUTPUT
+          echo "total_issues=$TOTAL_ISSUES" >> $GITHUB_OUTPUT
+          echo "css_files=$CSS_FILES" >> $GITHUB_OUTPUT
+
+      # NOVO: Relatório de métricas CSS
+      - name: Display CSS Metrics for Squad ${{ matrix.squad }}
+        run: |
+          echo " "
+          echo "🎯 MÉTRICAS CSS - SQUAD ${{ matrix.squad }}"
+          echo "=========================================="
+          echo "📁 Arquivos CSS analisados: ${{ steps.css_analysis.outputs.css_files }}"
+          echo "❌ Erros: ${{ steps.css_analysis.outputs.error_count }}"
+          echo "⚠️  Warnings: ${{ steps.css_analysis.outputs.warning_count }}"
+          echo "📊 Total de problemas: ${{ steps.css_analysis.outputs.total_issues }}"
+          echo " "
+          echo "💡 Relatório para fins de acompanhamento"
+          echo "🚀 Merge NÃO bloqueado por métricas CSS"
+          echo "=========================================="
+
+      - name: Upload Squad Metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-squad-${{ matrix.squad }}
+          path: |
+            metrics-squad-${{ matrix.squad }}.json
+            research_metrics.json
+            research_data_glmm.csv
+            css-report-squad-${{ matrix.squad }}.json  

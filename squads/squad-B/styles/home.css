@@ -1,0 +1,123 @@
+/* Estilos base - personalize para seu squad */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               'Segoe UI', sans-serif;
+               margin: 40px;
+               background-image: linear-gradient(270deg, #8800f8, #bd88f3);
+               margin: 20px;
+               height: 100vh;
+}
+
+    header {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items:end;
+  
+  
+}
+
+main {
+  font-family: "Science Gothic", sans-serif;  
+  margin: 50px;
+  padding: 20px;
+  background-color: #ad66f5;
+  box-shadow: #613f7ce5 10px 10px 20px;
+  border-radius: 40px;
+}
+
+ul {
+  display: inline-flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 10px;
+  margin: auto;
+  
+  
+}
+
+li {
+  
+  margin: 0 15px;
+  padding: 15px 25px;
+  background-color: #C27CFA;
+  box-shadow: #613f7ce5 10px 10px 20px;
+  border-radius: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+h1, p {
+  text-align: center;
+  color: white;
+  
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;  
+  gap: 15px;                 
+  justify-content: center;    
+  margin: 30px;
+
+}
+.button a {
+  display: flex;             
+  align-items: center;
+  justify-content: center;
+}
+
+.button a svg {
+  width: 50px;             
+  height: 50px;
+  vertical-align: middle;
+}
+
+.button a svg path {
+  fill: #fff;
+}
+
+@keyframes salto {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); 
+    }
+    40% {
+        transform: translateY(-20px); 
+    }
+    60% {
+        transform: translateY(-10px);
+    } 
+} 
+
+#github, #linkedin{
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+#github:hover, #linkedin:hover {
+    transform: translateY(-10px);
+}
+
+li {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+li:hover{
+    transform: translateY(-10px);
+}

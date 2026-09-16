@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --background: #FEFEFE;
+  --text: #0A0614;
+  --cor-primaria: #2349FF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', Segoe UI, Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: var(--background);
+  & * {
+    color: var(--text);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 804px;
+  justify-content: flex-end;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.menu ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu ul li {
+  list-style: none;
+  gap: 10px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+}
+
+.pag-ativa {
+  background-color: var(--cor-primaria);
+  border-radius: 100px;
+  color: var(--background);
+  padding: 15px 30px;
+}
+
+.intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 35px;
+    padding-bottom: 30px;
+  }
+  & > h2 {
+    font-size: 96px;
+    font-weight: 700;
+  }
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  gap: 20px;
+  height: 400px;
+  & .project-card-container--css {
+    background: radial-gradient(circle at 50% 10%, rgba(38, 77, 228, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--html {
+    background: radial-gradient(circle at 50% 10%, rgba(227, 76, 38, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--javascript {
+    background: radial-gradient(circle at 50% 10%, rgba(247, 223, 30, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--figma {
+    background: radial-gradient(circle at 50% 10%, rgba(5, 190, 107, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--java {
+    background: radial-gradient(circle at 50% 10%, rgba(210, 39, 48, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--node {
+    background: radial-gradient(circle at 50% 10%, rgba(130, 210, 90, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--python {
+    background: radial-gradient(circle at 50% 10%, rgba(70, 130, 255, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container--react {
+    background: radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.7), rgba(254, 254, 254, 1)) !important;
+  }
+  & .project-card-container {
+    background: radial-gradient(circle at 50% 10%, rgba(35, 73, 255, 0.7), rgba(254, 254, 254, 1));
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    & .project-card {
+      width: 150px;
+      padding: 10px;
+      border-radius: inherit;
+      --blur-strength: 20px;
+      backdrop-filter: blur(var(--blur-strength));
+      -webkit-backdrop-filter: blur(var(--blur-strength));
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+  }
+}
+
+.skills-logo {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 15px auto 15px auto;
+}
+
+.infos > h3 {
+  text-align: center;
+  font-weight: 500;
+  cursor: default;
+}
+
+/* Grade de competências com cartões claros e leitura rápida. */
+.projects-container { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px !important; width: 100% !important; height: auto !important; margin-top: 28px !important; }
+.projects-container .project-card-container { min-height: 184px; padding: 10px; border: 0 !important; border-radius: 18px !important; background: var(--paper) !important; box-shadow: 0 10px 24px rgba(23, 50, 77, .07) !important; }
+.projects-container .project-card-container:hover { transform: translateY(-5px); box-shadow: 0 16px 28px rgba(23, 50, 77, .12) !important; }
+.projects-container .project-card { display: flex; width: 100% !important; height: 100%; min-height: 162px; flex-direction: column; justify-content: center; padding: 22px !important; border: 1px solid var(--line) !important; border-radius: 14px !important; background: transparent !important; box-shadow: none !important; }
+.projects-container .skills-logo { width: 58px; height: 58px; margin: 0 auto 16px; }
+.projects-container .infos > h3 { margin: 0; color: var(--navy) !important; font: 700 1rem 'Manrope', sans-serif; }
+.project-card-container--css .project-card { border-top: 4px solid #2574a9 !important; }
+.project-card-container--html .project-card { border-top: 4px solid #e76f51 !important; }
+.project-card-container--javascript .project-card { border-top: 4px solid #d7a928 !important; }
+.project-card-container--figma .project-card { border-top: 4px solid #a05c9b !important; }
+.project-card-container--java .project-card { border-top: 4px solid #cf5d4f !important; }
+.project-card-container--node .project-card { border-top: 4px solid #5b9b63 !important; }
+.project-card-container--python .project-card { border-top: 4px solid #477ca8 !important; }
+.project-card-container--react .project-card { border-top: 4px solid var(--teal) !important; }
+
+@media (max-width: 900px) {
+  .projects-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .projects-container { grid-template-columns: 1fr; }
+}

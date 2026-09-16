@@ -1,0 +1,96 @@
+/* Estilos base - personalize para seu squad */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               'Segoe UI', sans-serif;
+               margin: 30px;
+  background-color: #f3d3ab;
+  color: black;
+  justify-content: center;
+}
+
+.nav-bar {
+  padding: 20px;
+}
+
+.header-bar {
+  padding: 20px;
+  text-align: center;
+}
+
+.case-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+}
+
+.case-resultados {
+  display: flex;
+  padding: 20px;
+  justify-content: space-evenly;
+}
+
+.desafio, .solucao, .resultados, .tecnologias {
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.508);
+  display: flex;
+  padding: 20px 50px;
+  gap: 20px;
+  justify-content:baseline;
+}
+
+.depoimento {
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.508);
+  padding: 20px;
+  color: black;
+  border-radius: 30px;
+}
+
+.menu {
+  display: flex;
+  justify-content: end;
+}
+
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+li {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+li:hover{
+    transform: translateY(-10px);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+  
+.tecnologias {
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-item {
+  padding: 8px 12px;
+  margin: 5px 0;
+}
+
+.cliente-info {
+  margin: 10px;
+  background-color: #0f0d0abf;
+  color: #f3d3ab;
+  padding: 20px;
+  border-radius: 30px;
+}

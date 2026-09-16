@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --background: #FEFEFE;
+  --text: #0A0614;
+  --cor-primaria: #2349FF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', Segoe UI, Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: var(--background);
+  & * {
+    color: var(--text);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 804px;
+  justify-content: flex-end;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.menu ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu ul li {
+  list-style: none;
+  gap: 10px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+}
+
+.pag-ativa {
+  background-color: var(--cor-primaria);
+  border-radius: 100px;
+  color: var(--background);
+  padding: 15px 30px;
+}
+
+.intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 35px;
+    padding-bottom: 30px;
+  }
+  & > h2 {
+    font-size: 96px;
+    font-weight: 700;
+  }
+}
+
+.project-card {
+  border: 1px solid #CAD9EC;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  & > .project-logo {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    margin-bottom: 15px;
+  }
+  & .infos {
+    & h3 {
+      font-size: 16px;
+      font-weight: 600;
+      font-style: normal;
+      line-height: normal;
+    }
+    & .period {
+      color: #6A6F8E;
+      font-size: 16px;
+      font-weight: 600;
+      font-style: normal;
+      line-height: normal;
+    }
+    & .description {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    & .technologies {
+      padding-bottom: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cor-primaria);
+      & > strong {
+        font-weight: 500;
+      }
+    }
+    & > ul {
+      & li {
+        padding-bottom: 10px;
+        font-weight: 200;
+        font-size: 16px;
+      }
+      & li::marker {
+        content: "> ";
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+  }
+}
